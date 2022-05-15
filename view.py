@@ -1,8 +1,7 @@
 import tkinter as tk
-
+import os
 
 import resize
-
 
 def view():
     root = tk.Tk()
@@ -40,11 +39,23 @@ def view():
     - drag and drop
     '''
 
+    # SAVE AS
+    saveDialogButton = tk.Button(text='SAVE AS', command=dirdialog_clicked)
+    saveDialogButton.pack(anchor=tk.W)
+
+
     # RUN
     runButton = tk.Button(text='RUN', command=resize.run)
     runButton.pack(anchor=tk.W)
 
     root.mainloop()
+
+def dirdialog_clicked():
+    current_dir = os.path.abspath(os.path.dirname(__file__))
+    dir_path = tk.filedialog.askdirectory(initialdir=current_dir)
+
+    global setDir
+    setDir.set(dir_path)
 
 def get_values():
     get_filename = before_picture_entry.get()
