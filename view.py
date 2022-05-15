@@ -1,7 +1,10 @@
 import tkinter as tk
+from tkinter import filedialog as tkfd
 import os
 
 import resize
+
+global setDir
 
 def view():
     root = tk.Tk()
@@ -52,9 +55,8 @@ def view():
 
 def dirdialog_clicked():
     current_dir = os.path.abspath(os.path.dirname(__file__))
-    dir_path = tk.filedialog.askdirectory(initialdir=current_dir)
+    dir_path = tkfd.askdirectory(initialdir=current_dir)
 
-    global setDir
     setDir.set(dir_path)
 
 def get_values():
